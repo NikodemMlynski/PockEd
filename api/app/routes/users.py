@@ -25,3 +25,7 @@ def get_all_users(db: Session = Depends(get_db)):
 @router.get("/{id}", response_model=UserOut)
 def get_user_by_id(id: int, db: Session = Depends(get_db)):
     return UsersCRUD.get_user(db, id)
+
+@router.delete("/{id}")
+def delete_user(id: int, db: Session = Depends(get_db)):
+    UsersCRUD.delete_user(db, id) 

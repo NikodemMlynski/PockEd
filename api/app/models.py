@@ -52,6 +52,7 @@ class UserPersonality(Base):
     social_focus = Column(String)
     communication_style = Column(String)
     goals = Column(Text)
+    isFilled = Column(Boolean)
 
     user = relationship("User", back_populates="personality")
 

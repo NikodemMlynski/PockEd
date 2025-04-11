@@ -3,7 +3,7 @@ from app.models import User
 from app.schemas.user import UserIn, UserOut 
 from passlib.context import CryptContext 
 from fastapi import HTTPException, status 
-
+from .user_personality import UserPersonalityCRUD
 pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
 
 class UsersCRUD:
@@ -49,6 +49,7 @@ class UsersCRUD:
         db.add(db_user)
         db.commit()
         db.refresh(db_user)
+        UserPersonalityCRUD.create_user_personality(db_user.id, db)
         return db_user
     
     @staticmethod 

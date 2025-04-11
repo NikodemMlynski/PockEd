@@ -3,7 +3,6 @@ from typing import Optional
 from datetime import datetime
 
 class UserPersonalityIn(BaseModel):
-    user_id: int
     learning_style: str 
     personality: str 
     motivation_rules: str 
@@ -11,6 +10,7 @@ class UserPersonalityIn(BaseModel):
     social_focus: str 
     communication_style: str 
     goals: str 
+    isFilled: bool
 
 class UserPersonalityOut(BaseModel):
     id: int
@@ -21,6 +21,7 @@ class UserPersonalityOut(BaseModel):
     top_intelligences: str 
     social_focus: str 
     communication_style: str 
+    isFilled: bool
     goals: str 
 
 
