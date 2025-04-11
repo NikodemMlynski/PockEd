@@ -1,0 +1,60 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.so
+*.log
+*.sqlite3
+
+# Virtual environment
+venv/
+.env
+.env.*
+.venv/
+.poetry/
+
+# Poetry
+poetry.lock
+poetry.toml
+
+# IDEs & editors
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# Bytecode and cache
+*.pyc
+.mypy_cache/
+.dmypy.json
+.pytest_cache/
+
+# Test reports
+htmlcov/
+coverage.xml
+.coverage
+.cache
+nosetests.xml
+test-results/
+
+# FastAPI / Uvicorn
+instance/
+*.db
+*.pid
+
+# Alembic
+alembic.ini
+migrations/versions/*.pyc
+migrations/__pycache__/
+
+# Local logs and dumps
+*.log
+*.bak
+*.tmp
+*.swp
+*.old
+
+# macOS & Linux
+.DS_Store
+Thumbs.db
