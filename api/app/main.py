@@ -3,7 +3,7 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from app.database import Base, engine
 from app import models
-from app.routes import users, auth
+from app.routes import users, auth, user_personality
 
 Base.metadata.create_all(bind=engine)
 app = FastAPI(
@@ -21,6 +21,8 @@ app.add_middleware(
 )
 app.include_router(users.router)
 app.include_router(auth.router)
+app.include_router(user_personality.router)
+
 @app.get("/")
 def root():
     return {"message": "Welcome to edu API"}
