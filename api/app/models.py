@@ -24,8 +24,6 @@ class User(Base):
     email = Column(String, unique=True, nullable=False)
     password = Column(String, nullable=False)
     created_at = Column(Date, default=datetime.date.today)
-    updated_at = Column(Date, default=datetime.date.today)
-    profile_url = Column(String)
     name = Column(String)
     surname = Column(String)
     school = Column(String)
@@ -54,6 +52,7 @@ class UserPersonality(Base):
     social_focus = Column(String)
     communication_style = Column(String)
     goals = Column(Text)
+    isFilled = Column(Boolean)
 
     user = relationship("User", back_populates="personality")
 
