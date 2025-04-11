@@ -1,0 +1,7 @@
+1) Administartor dodaje wszytskie konkursy do dashboradu, sam szukając, lub za pośrdnictwem wniosku,
+który otrzymuje od usera (pkt. 2nd).
+
+2) User, (uczeń, student, rodzic, nauczyciel..) może wyslać konkurs, aby został dodany do dashboradu,
+jeśli przejdzie weryfikacje przez admina.
+
+3) Wgląd tylko do prezentacji 
