@@ -1,34 +1,76 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
 
+import {createBrowserRouter, RouterProvider} from "react-router-dom";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query"
+import {ToastContainer} from "react-toastify"
+import { AuthProvider } from "./context/AuthProvider";
+import AuthLayout from "./layouts/AuthLayout";
+import RootLayout from "./layouts/RootLayout";
+import Dashboard from "./components/Dashboard";
+import PersonalityForm from "./components/PersonalityForm";
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      staleTime: 5 * 60 * 1000, // 5 minutes,
+      gcTime: 10 * 60 * 1000, // 10 minutes garbage collector time,
+      retry: false,
+      refetchOnWindowFocus: false,
+    },
+  },
+});
+
+const router = createBrowserRouter([
+  // {
+  //   path: "/",
+  //   element: <AuthProvider><AuthLayout/></AuthProvider>,
+  //   children: [
+  //     {
+  //       path: "signin",
+  //       element: <h1>strona logowania</h1>
+  //     },
+  //     {
+  //       path: "signup",
+  //       element: <h1>Strona rejestracji</h1>
+  //     }
+  //   ]
+  // },
+  {
+    path: "/",
+    element: <RootLayout/>,
+    children: [
+      {
+        index: true,
+        element: <Dashboard/>
+      },
+      {
+        path: "flashcards",
+        element: <h1>Fiszki bratku</h1>
+      },
+      {
+        path: "planning",
+        element: <h1>Planowanie bratku</h1>
+      },
+      {
+        path: "notes",
+        element: <h1>Tworzenie notatek ktore potem stworza fiszki</h1>
+      },
+      {
+        path: "informations",
+        element: <h1>Strona konkursów stypendiów i najważniejszych dla uczniów informacji.</h1>
+      },
+      {
+        path: 'profile',
+        element: <PersonalityForm/>
+      }
+    ]
+  }
+])
 function App() {
-  const [count, setCount] = useState(0)
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+    <QueryClientProvider client={queryClient}>
+      <RouterProvider router={router} />
+      <ToastContainer/>
+    </QueryClientProvider>
   )
 }
 
