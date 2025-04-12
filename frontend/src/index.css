@@ -1,1 +1,4 @@
-@import "tailwindcss";
+/* Możesz tutaj dodać ogólny CSS, np. dla TailwindCSS lub inne style */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
