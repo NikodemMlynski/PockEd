@@ -1,15 +1,17 @@
 import { Card, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import { useAuth } from '@/context/AuthProvider';
 import { Flame, Star } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 const Dashboard = () => {
+  const {user} = useAuth();
   return (
     <div className="space-y-4">
       {/* Górny pasek z ikonami */}
 
       {/* Biały kafelek z powitaniem */}
       <Card className=" p-4 bg-white rounded-3xl shadow-xl border-none">
-        <div className="text-2xl font-semibold">Cześć, Użytkownik</div>
+        <div className="text-2xl font-semibold">Cześć, {user?.username}</div>
         <div className="text-lg">Wybierz, co chcesz dzisiaj zrobić:</div>
       </Card>
 

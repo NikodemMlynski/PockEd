@@ -16,6 +16,7 @@ interface AuthContextType {
     login: (token: string) => void;
     logout: () => void;
     isLoading: boolean;
+    token: string | null;
 }
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
@@ -30,7 +31,7 @@ export const AuthProvider = ({children}: {children: React.ReactNode}) => {
             const token = localStorage.getItem(TOKEN_STORAGE_KEY);
             if(!token) return null;
 
-            const response = await fetch(`${API_URL}users/me`, {
+            const response = await fetch(`${API_URL}/users/me`, {
                 headers: {
                     Authorization: `Bearer ${token}`
                 }
@@ -45,9 +46,10 @@ export const AuthProvider = ({children}: {children: React.ReactNode}) => {
 
     const loginMutation = useMutation({
         mutationFn: async (token: string) => {
+            console.log(token);
             localStorage.setItem(TOKEN_STORAGE_KEY, token);
 
-            const response = await fetch(`${API_URL}users`, {
+            const response = await fetch(`${API_URL}/users/me`, {
                 headers: {
                     Authorization: `Bearer ${token}`
                 }
@@ -75,7 +77,8 @@ export const AuthProvider = ({children}: {children: React.ReactNode}) => {
             user: user || null,
             login: loginMutation.mutateAsync,
             logout,
-            isLoading
+            isLoading,
+            token: localStorage.getItem(TOKEN_STORAGE_KEY) || null,
         }}>
             {children}
         </AuthContext.Provider>

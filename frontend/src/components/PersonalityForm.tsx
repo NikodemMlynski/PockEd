@@ -5,8 +5,21 @@ import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
+import { useMutation } from "@tanstack/react-query";
+import { API_URL } from "@/config/constants";
+import { useAuth } from "@/context/AuthProvider";
+import { toast } from "react-toastify";
 
 type FormData = {
+  learning_style: string[];
+  personality: Record<string, number>;
+  motivation_rules: string[];
+  top_intelligences: string[];
+  social_focus: string[];
+  communication_style: string[];
+  goals: string;
+};
+type RequestData = {
   learning_style: string[];
   personality: Record<string, number>;
   motivation_rules: string[];
@@ -50,18 +63,67 @@ export default function PersonalityForm() {
     register,
     handleSubmit,
     formState: { errors },
-    getValues,
+    setValue,
   } = useForm<FormData>();
+  const {token} = useAuth();
 
-  const validateArray = (fieldName: keyof FormData) => {
-    return () => {
-      const value = getValues(fieldName);
-      return value && value.length > 0 || "Zaznacz przynajmniej jedną odpowiedź.";
-    };
+  const [learningStyle, setLearningStyle] = React.useState<string[]>([]);
+  const [motivationRules, setMotivationRules] = React.useState<string[]>([]);
+  const [topIntelligences, setTopIntelligences] = React.useState<string[]>([]);
+  const [socialFocusState, setSocialFocusState] = React.useState<string[]>([]);
+  const [communicationStyle, setCommunicationStyle] = React.useState<string[]>([]);
+
+  const toggleOption = (option: string, list: string[], setter: any) => {
+    if (list.includes(option)) {
+      setter(list.filter((item) => item !== option));
+    } else {
+      setter([...list, option]);
+    }
   };
 
+  const validateNotEmpty = (value: string[]) =>
+    value.length > 0 || "Zaznacz przynajmniej jedną odpowiedź.";
+
+  const validateNumberField = (val: number | undefined) =>
+    val !== undefined && !isNaN(val) ? true : "Wprowadź liczbę od 0 do 5.";
+
+  const mutation = useMutation({
+    mutationFn: async (data: RequestData) => {
+      const res = await fetch(`${API_URL}/personality/update_user/me`, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+          "Authorization": `Bearer ${token}`
+        },
+        body: JSON.stringify(data)
+      })
+      if(!res.ok) {
+        const resData = await res.json();
+        console.log(resData?.detail);
+        throw new Error(resData?.detail);
+      }
+      return res.json();
+    },
+    onSuccess: (data) => {
+      console.log(data);
+    },
+    onError: (error: any) => {
+      toast.error("Coś sie zjebalo")
+      console.log(error);
+    }
+  })
+
   const onSubmit = (data: FormData) => {
-    console.log(data);
+    const payload = {
+      ...data,
+      goals: data.goals.split(","),
+      learning_style: learningStyle,
+      motivation_rules: motivationRules,
+      top_intelligences: topIntelligences,
+      social_focus: socialFocusState,
+      communication_style: communicationStyle,
+    };
+    mutation.mutate(payload);
   };
 
   return (
@@ -71,19 +133,29 @@ export default function PersonalityForm() {
     >
       <h2 className="text-2xl font-semibold text-blue-600">Formularz Personalizacji</h2>
 
-      {/* Style uczenia się */}
+      {/* Styl uczenia się */}
       <div>
         <Label className="text-lg">Styl uczenia się</Label>
         <div className="grid grid-cols-2 gap-2 mt-2">
           {learningStyles.map((style) => (
             <label key={style} className="flex items-center gap-2">
-              <Checkbox {...register("learning_style", { validate: validateArray("learning_style") })} value={style} />
+              <Checkbox
+                checked={learningStyle.includes(style)}
+                onCheckedChange={() => toggleOption(style, learningStyle, setLearningStyle)}
+              />
               {style}
             </label>
           ))}
         </div>
+        <input
+          type="hidden"
+          {...register("learning_style", {
+            validate: () => validateNotEmpty(learningStyle),
+          })}
+          value={JSON.stringify(learningStyle)}
+        />
         {errors.learning_style && (
-          <p className="text-red-500 text-sm mt-1">{errors.learning_style.message}</p>
+          <p className="text-red-500 text-sm">{errors.learning_style.message}</p>
         )}
       </div>
 
@@ -98,59 +170,94 @@ export default function PersonalityForm() {
               min={0}
               max={5}
               {...register(`personality.${trait}` as const, {
+                required: "To pole jest wymagane.",
                 valueAsNumber: true,
+                validate: validateNumberField,
               })}
               className="bg-blue-50"
             />
+            {errors.personality?.[trait] && (
+              <p className="text-red-500 text-sm">{errors.personality?.[trait]?.message}</p>
+            )}
           </div>
         ))}
       </div>
 
-      {/* Motywatory */}
+      {/* Motywacja */}
       <div>
         <Label className="text-lg">Motywacja</Label>
         <div className="grid grid-cols-2 gap-2 mt-2">
           {motivations.map((m) => (
             <label key={m} className="flex items-center gap-2">
-              <Checkbox {...register("motivation_rules", { validate: validateArray("motivation_rules") })} value={m} />
+              <Checkbox
+                checked={motivationRules.includes(m)}
+                onCheckedChange={() => toggleOption(m, motivationRules, setMotivationRules)}
+              />
               {m}
             </label>
           ))}
         </div>
+        <input
+          type="hidden"
+          {...register("motivation_rules", {
+            validate: () => validateNotEmpty(motivationRules),
+          })}
+          value={JSON.stringify(motivationRules)}
+        />
         {errors.motivation_rules && (
-          <p className="text-red-500 text-sm mt-1">{errors.motivation_rules.message}</p>
+          <p className="text-red-500 text-sm">{errors.motivation_rules.message}</p>
         )}
       </div>
 
-      {/* Inteligencje */}
+      {/* Mocne strony */}
       <div>
         <Label className="text-lg">Mocne strony</Label>
         <div className="grid grid-cols-2 gap-2 mt-2">
           {intelligences.map((intel) => (
             <label key={intel} className="flex items-center gap-2">
-              <Checkbox {...register("top_intelligences", { validate: validateArray("top_intelligences") })} value={intel} />
+              <Checkbox
+                checked={topIntelligences.includes(intel)}
+                onCheckedChange={() => toggleOption(intel, topIntelligences, setTopIntelligences)}
+              />
               {intel}
             </label>
           ))}
         </div>
+        <input
+          type="hidden"
+          {...register("top_intelligences", {
+            validate: () => validateNotEmpty(topIntelligences),
+          })}
+          value={JSON.stringify(topIntelligences)}
+        />
         {errors.top_intelligences && (
-          <p className="text-red-500 text-sm mt-1">{errors.top_intelligences.message}</p>
+          <p className="text-red-500 text-sm">{errors.top_intelligences.message}</p>
         )}
       </div>
 
-      {/* Społeczna orientacja */}
+      {/* Społeczne wartości */}
       <div>
         <Label className="text-lg">Społeczne wartości</Label>
         <div className="grid grid-cols-2 gap-2 mt-2">
           {socialFocus.map((item) => (
             <label key={item} className="flex items-center gap-2">
-              <Checkbox {...register("social_focus", { validate: validateArray("social_focus") })} value={item} />
+              <Checkbox
+                checked={socialFocusState.includes(item)}
+                onCheckedChange={() => toggleOption(item, socialFocusState, setSocialFocusState)}
+              />
               {item}
             </label>
           ))}
         </div>
+        <input
+          type="hidden"
+          {...register("social_focus", {
+            validate: () => validateNotEmpty(socialFocusState),
+          })}
+          value={JSON.stringify(socialFocusState)}
+        />
         {errors.social_focus && (
-          <p className="text-red-500 text-sm mt-1">{errors.social_focus.message}</p>
+          <p className="text-red-500 text-sm">{errors.social_focus.message}</p>
         )}
       </div>
 
@@ -160,13 +267,25 @@ export default function PersonalityForm() {
         <div className="grid grid-cols-2 gap-2 mt-2">
           {communication.map((style) => (
             <label key={style} className="flex items-center gap-2">
-              <Checkbox {...register("communication_style", { validate: validateArray("communication_style") })} value={style} />
+              <Checkbox
+                checked={communicationStyle.includes(style)}
+                onCheckedChange={() =>
+                  toggleOption(style, communicationStyle, setCommunicationStyle)
+                }
+              />
               {style}
             </label>
           ))}
         </div>
+        <input
+          type="hidden"
+          {...register("communication_style", {
+            validate: () => validateNotEmpty(communicationStyle),
+          })}
+          value={JSON.stringify(communicationStyle)}
+        />
         {errors.communication_style && (
-          <p className="text-red-500 text-sm mt-1">{errors.communication_style.message}</p>
+          <p className="text-red-500 text-sm">{errors.communication_style.message}</p>
         )}
       </div>
 
@@ -174,20 +293,20 @@ export default function PersonalityForm() {
       <div>
         <Label className="text-lg">Twoje cele</Label>
         <Textarea
-          {...register("goals", {
-            validate: (val) => (val.length > 0 ? true : "Wpisz przynajmniej jeden cel."),
-          })}
           placeholder="Np. programowanie, wolontariat..."
           className="bg-blue-50"
+          {...register("goals", {
+            validate: (val) => val.trim().length > 0 || "Wpisz przynajmniej jeden cel.",
+          })}
         />
         {errors.goals && (
-          <p className="text-red-500 text-sm mt-1">{errors.goals.message}</p>
+          <p className="text-red-500 text-sm">{errors.goals.message}</p>
         )}
       </div>
 
       {/* Submit */}
       <div className="flex justify-end">
-        <Button type="submit" className="bg-blue-500 hover:bg-blue-600 text-white">
+        <Button type="submit" className="cursor-pointer bg-blue-500 hover:bg-blue-600 text-white">
           Zapisz profil
         </Button>
       </div>
