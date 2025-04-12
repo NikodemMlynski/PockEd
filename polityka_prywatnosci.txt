@@ -1,0 +1,102 @@
+**Polityka Prywatności Portalu [Nazwa Twojego Portalu]**
+
+**Data ostatniej aktualizacji:** [Data]
+
+Niniejsza Polityka Prywatności opisuje, w jaki sposób [Nazwa Twojego Portalu] (dalej zwany "Portalem", "My", "Nas") gromadzi, wykorzystuje, przechowuje i chroni dane osobowe użytkowników (dalej zwanych "Użytkownikami", "Tobą"). Dbamy o Twoją prywatność i dokładamy wszelkich starań, aby Twoje dane osobowe były bezpieczne i przetwarzane zgodnie z obowiązującymi przepisami prawa.
+
+**1. Administrator Danych Osobowych**
+
+Administratorem Twoich danych osobowych jest [Twoja Nazwa/Nazwa Twojej Organizacji], z siedzibą w [Twój Adres/Adres Twojej Organizacji], [Kod Pocztowy], [Miejscowość], Polska. Możesz się z nami skontaktować pod adresem e-mail: [Twój Adres E-mail] lub numerem telefonu: [Twój Numer Telefonu].
+
+**2. Jakie Dane Osobowe Gromadzimy?**
+
+Możemy gromadzić następujące kategorie danych osobowych:
+
+* **Dane identyfikacyjne:** Imię, nazwisko, login użytkownika.
+* **Dane kontaktowe:** Adres e-mail.
+* **Dane dotyczące edukacji (jeśli dotyczy funkcjonalności portalu):** Województwo, szkoła.
+* **Dane dotyczące hasła:** Hasło do konta użytkownika (przechowywane w formie zaszyfrowanej).
+* **Dane dotyczące korzystania z Portalu:** Adres IP, typ przeglądarki, system operacyjny, dane dotyczące odwiedzanych stron, czas spędzony na Portalu, kliknięcia, inne dane dotyczące aktywności na Portalu.
+* **Inne dane osobowe, które Użytkownik dobrowolnie poda w ramach korzystania z Portalu (w przyszłości):** [Wymień potencjalne przyszłe dane, np. zainteresowania, preferencje, zdjęcia profilowe, itp.].
+
+**3. Cel i Podstawa Prawna Przetwarzania Danych Osobowych**
+
+Twoje dane osobowe mogą być przetwarzane w następujących celach i na następujących podstawach prawnych:
+
+* **Realizacja usług oferowanych przez Portal:**
+    * Zakładanie i zarządzanie kontem użytkownika (podstawa prawna: art. 6 ust. 1 lit. b RODO - niezbędność do wykonania umowy).
+    * Umożliwienie korzystania z funkcjonalności Portalu, w tym [wymień konkretne funkcjonalności, np. przeglądanie informacji, komunikacja z innymi użytkownikami, dostęp do materiałów edukacyjnych] (podstawa prawna: art. 6 ust. 1 lit. b RODO - niezbędność do wykonania umowy).
+* **Zabezpieczenie Portalu i ochrona przed nadużyciami:**
+    * Monitorowanie aktywności użytkowników, wykrywanie i zapobieganie oszustwom (podstawa prawna: art. 6 ust. 1 lit. f RODO - prawnie uzasadniony interes administratora).
+    * Zapewnienie bezpieczeństwa danych i systemów informatycznych (podstawa prawna: art. 6 ust. 1 lit. f RODO - prawnie uzasadniony interes administratora).
+* **Komunikacja z Użytkownikami:**
+    * Odpowiadanie na zapytania i zgłoszenia (podstawa prawna: art. 6 ust. 1 lit. f RODO - prawnie uzasadniony interes administratora).
+    * Informowanie o zmianach w Polityce Prywatności lub Regulaminie Portalu (w niektórych przypadkach podstawa prawna może być również art. 6 ust. 1 lit. c RODO - obowiązek prawny).
+* **Marketing (jeśli dotyczy):**
+    * Przesyłanie informacji marketingowych dotyczących Naszych usług lub usług podmiotów trzecich (podstawa prawna: art. 6 ust. 1 lit. a RODO - zgoda Użytkownika). Zawsze będziesz miał możliwość wycofania zgody.
+* **Ulepszanie Portalu i dostosowywanie go do potrzeb Użytkowników:**
+    * Analizowanie danych dotyczących korzystania z Portalu w celu optymalizacji jego funkcjonalności i treści (podstawa prawna: art. 6 ust. 1 lit. f RODO - prawnie uzasadniony interes administratora).
+* **Wypełnienie obowiązków prawnych ciążących na Administratorze (jeśli dotyczy):**
+    * [Wymień konkretne obowiązki prawne, np. przechowywanie danych na potrzeby rachunkowe] (podstawa prawna: art. 6 ust. 1 lit. c RODO - obowiązek prawny).
+
+**4. Jak Chronimy Twoje Dane Osobowe?**
+
+Dokładamy wszelkich starań, aby zapewnić bezpieczeństwo Twoich danych osobowych. Stosujemy odpowiednie środki techniczne i organizacyjne, aby chronić je przed nieuprawnionym dostępem, utratą, zniszczeniem, modyfikacją lub ujawnieniem. Środki te obejmują między innymi:
+
+* **Szyfrowanie danych:** Hasła użytkowników są przechowywane w formie zaszyfrowanej z użyciem silnych algorytmów kryptograficznych. Transmisja danych wrażliwych (jeśli występuje) odbywa się z wykorzystaniem protokołu SSL/TLS.
+* **Kontrola dostępu:** Dostęp do danych osobowych mają jedynie upoważnieni pracownicy i współpracownicy, którzy są zobowiązani do zachowania poufności.
+* **Regularne aktualizacje oprogramowania i systemów:** Zapewniamy, że nasze systemy informatyczne są na bieżąco aktualizowane w celu minimalizacji ryzyka wystąpienia luk bezpieczeństwa.
+* **Procedury bezpieczeństwa:** Wdrożyliśmy procedury zarządzania bezpieczeństwem informacji, w tym procedury tworzenia kopii zapasowych i odzyskiwania danych.
+* **Zabezpieczenia fizyczne:** Serwery, na których przechowywane są dane, znajdują się w zabezpieczonych centrach danych z ograniczonym dostępem.
+
+**5. Udostępnianie Danych Osobowych**
+
+Możemy udostępniać Twoje dane osobowe następującym kategoriom odbiorców:
+
+* **Podmiotom przetwarzającym dane w Naszym imieniu:** Dostawcom usług IT, hostingowym, analitycznych, marketingowych, obsługi klienta itp. Zapewniamy, że podmioty te przetwarzają dane zgodnie z Naszymi instrukcjami i obowiązującymi przepisami prawa.
+* **Podmiotom uprawnionym do otrzymania danych na podstawie przepisów prawa:** Organy publiczne, sądy, policja itp.
+* **Innym użytkownikom Portalu (jeśli dotyczy funkcjonalności):** [Opisz, w jakim zakresie dane mogą być widoczne dla innych użytkowników, np. pseudonim, informacje profilowe].
+* **Podmiotom trzecim za Twoją zgodą:** W przypadku gdy wyrazisz wyraźną zgodę na udostępnienie swoich danych konkretnym podmiotom w określonym celu.
+
+**6. Przechowywanie Danych Osobowych**
+
+Będziemy przechowywać Twoje dane osobowe tak długo, jak jest to niezbędne do realizacji celów, dla których zostały zgromadzone, chyba że przepisy prawa wymagają dłuższego okresu przechowywania. W szczególności:
+
+* Dane związane z kontem użytkownika będą przechowywane przez czas posiadania konta na Portalu. Po usunięciu konta, dane mogą być przechowywane przez okres niezbędny do zabezpieczenia roszczeń lub wypełnienia obowiązków prawnych.
+* Dane zbierane w celach marketingowych będą przechowywane do czasu wycofania Twojej zgody lub zgłoszenia sprzeciwu.
+* Dane dotyczące korzystania z Portalu (dane analityczne) mogą być przechowywane przez okres [określ konkretny okres].
+
+**7. Twoje Prawa**
+
+Przysługują Ci następujące prawa związane z przetwarzaniem Twoich danych osobowych:
+
+* **Prawo dostępu do danych:** Masz prawo do uzyskania informacji o tym, czy przetwarzamy Twoje dane osobowe, jakie dane przetwarzamy, w jakich celach i komu je udostępniamy.
+* **Prawo do sprostowania danych:** Masz prawo żądać sprostowania nieprawidłowych lub niekompletnych danych osobowych.
+* **Prawo do usunięcia danych ("prawo do bycia zapomnianym"):** Masz prawo żądać usunięcia Twoich danych osobowych w określonych sytuacjach, np. gdy dane nie są już niezbędne do celów, dla których zostały zgromadzone.
+* **Prawo do ograniczenia przetwarzania:** Masz prawo żądać ograniczenia przetwarzania Twoich danych osobowych w określonych sytuacjach, np. gdy kwestionujesz prawidłowość danych.
+* **Prawo do przenoszenia danych:** Masz prawo otrzymać swoje dane osobowe w ustrukturyzowanym, powszechnie używanym formacie nadającym się do odczytu maszynowego i przesłać je innemu administratorowi.
+* **Prawo do wniesienia sprzeciwu:** Masz prawo wnieść sprzeciw wobec przetwarzania Twoich danych osobowych opartego na Naszym prawnie uzasadnionym interesie, w tym profilowania.
+* **Prawo do wycofania zgody:** Jeśli przetwarzamy Twoje dane osobowe na podstawie Twojej zgody, masz prawo do jej wycofania w dowolnym momencie bez wpływu na zgodność z prawem przetwarzania, którego dokonano na podstawie zgody przed jej wycofaniem.
+* **Prawo do wniesienia skargi do organu nadzorczego:** Masz prawo wnieść skargę do Prezesa Urzędu Ochrony Danych Osobowych, jeśli uważasz, że przetwarzanie Twoich danych osobowych narusza przepisy prawa.
+
+Aby skorzystać z któregokolwiek z powyższych praw, prosimy o kontakt z Nami pod adresem e-mail: [Twój Adres E-mail] lub pisemnie na adres podany w punkcie 1.
+
+**8. Zmiany w Polityce Prywatności**
+
+Zastrzegamy sobie prawo do wprowadzania zmian w niniejszej Polityce Prywatności. O wszelkich istotnych zmianach będziemy informować Użytkowników poprzez opublikowanie zaktualizowanej wersji Polityki Prywatności na Portalu lub w inny odpowiedni sposób. Zachęcamy do regularnego zapoznawania się z treścią Polityki Prywatności.
+
+**9. Kontakt**
+
+W przypadku pytań lub wątpliwości dotyczących niniejszej Polityki Prywatności lub sposobu przetwarzania Twoich danych osobowych, prosimy o kontakt z Nami pod adresem e-mail: [Twój Adres E-mail] lub pisemnie na adres podany w punkcie 1.
+
+---
+
+**Ważne uwagi:**
+
+* **Dostosuj treść:** Szczegółowo opisz, jakie konkretnie dane osobowe gromadzisz w ramach swojego portalu i w jakich konkretnie celach je wykorzystujesz.
+* **Funkcjonalności portalu:** Opisz, jakie funkcje oferuje Twój portal i jakie dane są niezbędne do ich realizacji.
+* **Zabezpieczenia:** Bądź transparentny w opisie stosowanych środków bezpieczeństwa.
+* **Podmioty trzecie:** Jeśli współpracujesz z innymi podmiotami, które mają dostęp do danych osobowych (np. dostawcy usług analitycznych), wymień ich i opisz cel udostępniania danych.
+* **Marketing:** Jeśli planujesz działania marketingowe, opisz je szczegółowo i pamiętaj o konieczności uzyskania zgody użytkownika.
+* **Przyszłe dane:** Bądź ogólny w opisie potencjalnych przyszłych danych, ale staraj się przewidzieć, jakie informacje możesz gromadzić w przyszłości w związku z rozwojem portalu.
+* **Konsultacja prawna:** Zdecydowanie zalecam skonsultowanie się z prawnikiem specjalizującym się w ochronie danych osobowych, aby upewnić się, że Twoja polityka prywatności jest zgodna z obowiązującymi przepisami prawa i w pełni chroni prawa użytkowników.
