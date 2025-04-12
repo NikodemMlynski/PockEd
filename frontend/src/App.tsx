@@ -10,6 +10,9 @@ import PersonalityForm from "./components/PersonalityForm";
 import Settings from "./components/Settings";
 import ProtectedRoute from "./components/ProtectedRoute";
 import LoginForm from "./components/SignIn";
+import CreateNoteForm from "./components/CreateNoteForm";
+import NoteDisplay from "./NoteDisplay";
+import { StreakProvider } from "./context/StreakContext";
 const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
@@ -38,7 +41,7 @@ const router = createBrowserRouter([
   },
   {
     path: "/",
-    element: <AuthProvider><ProtectedRoute/></AuthProvider>,
+    element: <AuthProvider><StreakProvider><ProtectedRoute/></StreakProvider></AuthProvider>,
     children: [
       {path: "/",
       element: <RootLayout/>,
@@ -53,11 +56,11 @@ const router = createBrowserRouter([
         },
         {
           path: "planning",
-          element: <h1>Planowanie bratku</h1>
+          element: <NoteDisplay/>
         },
         {
           path: "notes",
-          element: <h1>Tworzenie notatek ktore potem stworza fiszki</h1>
+          element: <CreateNoteForm/>
         },
         {
           path: "informations",

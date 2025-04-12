@@ -8,8 +8,6 @@ class Settings(BaseSettings):
     secret_key: str 
     database_url: str
     OPENAI_API_KEY: str
-    AZURE_STORAGE_CONNECTION_STRING : str
-    CONTAINER_NAME : str
 
 
     model_config = ConfigDict(env_file=".env")

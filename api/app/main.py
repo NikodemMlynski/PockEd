@@ -26,6 +26,7 @@ app.include_router(chat.router)
 app.include_router(note.router)
 app.include_router(flashcards.router)
 
+
 @app.get("/")
 def root():
     return {"message": "Welcome to edu API"}

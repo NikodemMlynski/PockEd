@@ -1,10 +1,3 @@
-
-
-
-
-
-
-
 from sqlalchemy import Column, String, Integer, Date, Boolean, ForeignKey, Text, Enum
 from sqlalchemy.orm import relationship
 from sqlalchemy.ext.declarative import declarative_base
@@ -43,7 +36,6 @@ class User(Base):
     xp = relationship("UserXP", back_populates="user", uselist=False)
     goals = relationship("Goal", back_populates="user")
     flashcard_sets = relationship("FlashcardSet", back_populates="user")
-    notes = relationship("Note", back_populates="user")
 
 # -----------------------
 # USER_PERSONALITY
@@ -132,9 +124,7 @@ class FlashcardSet(Base):
     id = Column(Integer, primary_key=True)
     title = Column(String)
     user_id = Column(Integer, ForeignKey("users.id"))
-    note_id = Column(Integer, ForeignKey("notes.id"))
 
-    note = relationship("Note", back_populates="flashcard_sets")
     user = relationship("User", back_populates="flashcard_sets")
     flashcards = relationship("Flashcard", back_populates="flashcard_set")
 
@@ -150,7 +140,6 @@ class Flashcard(Base):
     answer = Column(Text)
     isLearned = Column(Boolean, default=False)
 
-    
     flashcard_set = relationship("FlashcardSet", back_populates="flashcards")
 
 # -----------------------
@@ -168,20 +157,3 @@ class Opportunity(Base):
     created_at = Column(Date, default=datetime.date.today)
     link = Column(String)
     target_audience = Column(String)
-# -----------------------
-# note
-# -----------------------
-class Note(Base):
-    __tablename__ = "notes"  # Corrected table name
-
-    id = Column(Integer, primary_key=True)
-    title = Column(String, nullable=False)
-    content = Column(Text, nullable=False)
-    created_at = Column(Date, default=datetime.date.today)
-    user_id = Column(Integer, ForeignKey("users.id"))
-
-    user = relationship("User", back_populates="notes")
-    flashcard_sets = relationship("FlashcardSet", back_populates="note")
-
-
-

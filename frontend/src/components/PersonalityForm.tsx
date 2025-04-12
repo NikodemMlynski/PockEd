@@ -105,6 +105,7 @@ export default function PersonalityForm() {
       return res.json();
     },
     onSuccess: (data) => {
+      toast.success("Dodano preferencje nauki")
       console.log(data);
     },
     onError: (error: any) => {
