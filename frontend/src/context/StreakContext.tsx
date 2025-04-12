@@ -2,7 +2,9 @@ import React, { createContext, useState, useEffect, useContext } from 'react';
 
 interface StreakContextType {
   streak: number;
+  exp: number;
   incrementStreak: () => void;
+  updateExp: (newExp: number) => void;
 }
 
 const StreakContext = createContext<StreakContextType | undefined>(undefined);
@@ -13,22 +15,26 @@ export const StreakProvider: React.FC<{ children: React.ReactNode }> = ({ childr
     return storedStreak ? parseInt(storedStreak, 10) : 0;
   });
 
+  const [exp, setExp] = useState<number>(() => {
+    const storedExp = localStorage.getItem('exp');
+    return storedExp ? parseInt(storedExp, 10) : 0;
+  });
+
   useEffect(() => {
     localStorage.setItem('streak', streak.toString());
-  }, [streak]);
+    localStorage.setItem('exp', exp.toString());
+  }, [streak, exp]);
 
   const incrementStreak = () => {
-    console.log('incrementStreak wywołane');
-    setStreak((prevStreak) => {
-      if (prevStreak === 0) {
-        return 1;
-      }
-      return prevStreak;
-    });
+    setStreak((prevStreak) => prevStreak + 1);
+  };
+
+  const updateExp = (newExp: number) => {
+    setExp(newExp);
   };
 
   return (
-    <StreakContext.Provider value={{ streak, incrementStreak }}>
+    <StreakContext.Provider value={{ streak, exp, incrementStreak, updateExp }}>
       {children}
     </StreakContext.Provider>
   );

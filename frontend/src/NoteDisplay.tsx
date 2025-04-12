@@ -12,11 +12,20 @@ const notes = [
 ];
 
 const NoteDisplay: React.FC = () => {
-  const { streak, incrementStreak } = useStreak();
   const [currentNoteIndex, setCurrentNoteIndex] = useState(0);
+  const [streakUpdated, setStreakUpdated] = useState(false); // Dodaj stan
+
+  const { incrementStreak, updateExp } = useStreak();
 
   const handleNextNote = () => {
-    setCurrentNoteIndex((prevIndex) => Math.min(prevIndex + 1, notes.length - 1));
+    setCurrentNoteIndex((prevIndex) => {
+      if (prevIndex === notes.length - 1 && !streakUpdated) {
+        incrementStreak();
+        updateExp(435);
+        setStreakUpdated(true); // Ustaw stan na true
+      }
+      return Math.min(prevIndex + 1, notes.length - 1);
+    });
   };
 
   const handlePrevNote = () => {
@@ -24,18 +33,19 @@ const NoteDisplay: React.FC = () => {
   };
 
   useEffect(() => {
-    if (currentNoteIndex === 4 && streak === 0) {
-      console.log('sie inkrementuje');
+    if (currentNoteIndex === notes.length - 1 && !streakUpdated) {
       incrementStreak();
+      updateExp(435);
+      setStreakUpdated(true); // Ustaw stan na true
     }
-  }, [currentNoteIndex, streak, incrementStreak]);
+  }, [currentNoteIndex, incrementStreak, updateExp, streakUpdated]);
 
   return (
     <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100">
       <Link to="/" className="w-[70%] text-sm mb-2 text-gray-500">
         Powrót
       </Link>
-      <div className="w-[85%] t bg-green-400 text-white p-4 rounded-lg mb-4">
+      <div className="w-[85%] bg-green-400 text-white p-4 rounded-lg mb-4">
         <h2 className="text-2xl font-bold text-center">Funkcja kwadratowa</h2>
         <p className="text-center">Plan nauki: Do 14.04.25r.</p>
       </div>
@@ -47,18 +57,10 @@ const NoteDisplay: React.FC = () => {
           <p className="text-gray-800">{notes[currentNoteIndex]}</p>
         </div>
         <div className="flex justify-between mb-4">
-          <Button
-            onClick={handlePrevNote}
-            disabled={currentNoteIndex === 0}
-            className="cursor-pointer bg-blue-500 hover:bg-blue-600"
-          >
+          <Button onClick={handlePrevNote} disabled={currentNoteIndex === 0} className="cursor-pointer bg-blue-500 hover:bg-blue-600">
             Poprzedni
           </Button>
-          <Button
-            onClick={handleNextNote}
-            disabled={currentNoteIndex === notes.length - 1}
-            className="cursor-pointer bg-blue-500 hover:bg-blue-600"
-          >
+          <Button onClick={handleNextNote} disabled={currentNoteIndex === notes.length - 1} className="cursor-pointer bg-blue-500 hover:bg-blue-600">
             Następny
           </Button>
         </div>
@@ -66,11 +68,11 @@ const NoteDisplay: React.FC = () => {
           <p className="text-lg">Plan nauki: do 12.02.25r.</p>
           <p className="text-md">
             <span>✅ Dotrzyj do slajdu 10</span>
-            <span className="ml-2 text-blue-400 font-bold">⭐ 10 XP</span>
+            <span className="ml-2 text-blue-400 font-bold">⭐- 10 XP</span>
           </p>
           <p className="text-md">
             <span>✅ Wykonaj 5 zadań</span>
-            <span className="ml-2 text-blue-400 font-bold">⭐ 40 XP</span>
+            <span className="ml-2 text-blue-400 font-bold">⭐- 40 XP</span>
           </p>
         </div>
       </div>

@@ -3,7 +3,7 @@ import { Flame, Star } from 'lucide-react';
 import { useEffect, useState } from 'react';
 
 const Header = () => {
-  const { streak } = useStreak();
+  const { streak, exp } = useStreak();
   const [localStreak, setLocalStreak] = useState(streak);
 
   useEffect(() => {
@@ -30,7 +30,7 @@ const Header = () => {
       </div>
       <div className="flex items-center">
         <Star className="w-9 h-9 text-yellow-500 fill-yellow-500 mr-1" />
-        <span className="font-bold text-2xl text-yellow-500">17k</span>
+        <span className="font-bold text-2xl text-yellow-500">{exp}</span>
       </div>
     </header>
   );
