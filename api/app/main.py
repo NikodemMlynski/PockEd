@@ -3,7 +3,7 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from app.database import Base, engine
 from app import models
-from app.routes import users, auth, user_personality, chat, note
+from app.routes import users, auth, user_personality, chat, note, flashcards
 
 Base.metadata.create_all(bind=engine)
 app = FastAPI(
@@ -24,6 +24,7 @@ app.include_router(auth.router)
 app.include_router(user_personality.router)
 app.include_router(chat.router)
 app.include_router(note.router)
+app.include_router(flashcards.router)
 
 @app.get("/")
 def root():
