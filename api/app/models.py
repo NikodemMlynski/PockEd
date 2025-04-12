@@ -14,6 +14,8 @@ class OpportunityType(str, enum.Enum):
     event = "event"
     club = "club"
 
+
+
 # -----------------------
 # USERS
 # -----------------------
@@ -157,3 +159,18 @@ class Opportunity(Base):
     created_at = Column(Date, default=datetime.date.today)
     link = Column(String)
     target_audience = Column(String)
+
+# -----------------------
+# note
+# -----------------------
+class Note(Base):
+    __tablename__ = "notes"  # Corrected table name
+
+    id = Column(Integer, primary_key=True)
+    title = Column(String, nullable=False)
+    content = Column(Text, nullable=False)
+    created_at = Column(Date, default=datetime.date.today)
+    user_id = Column(Integer, ForeignKey("users.id"))
+
+    user = relationship("User", back_populates="notes")
+    flashcard_sets = relationship("FlashcardSet", back_populates="note")
