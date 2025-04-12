@@ -59,6 +59,7 @@ uvloop = "0.21.0"
 watchfiles = "1.0.4"
 websockets = "14.1"
 openai = "^1.72.0"
+azure-storage-blob = "^12.25.1"
 
 [build-system]
 requires = ["poetry-core>=2.0.0,<3.0.0"]
